@@ -1,3 +1,6 @@
+<% if alert.present? %>
+  <p role="alert"><%= alert %></p>
+<% end %>
 <% if book.errors.any? %>
   <div role="alert">
     <p>Please correct the following:</p>

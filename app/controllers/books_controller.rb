@@ -17,6 +17,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to root_path, notice: "Book was successfully created."
     else
+      flash.now[:alert] = "Book could not be saved."
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,6 +29,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to root_path, notice: "Book was successfully updated.", status: :see_other
     else
+      flash.now[:alert] = "Book could not be saved."
       render :edit, status: :unprocessable_entity
     end
   end
