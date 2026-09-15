@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get "main/index"
+  get "tasks/index"
+  get "tasks/new"
+  get "tasks/edit"
+  match "about", to: "main#about", via: :get
+  match "hello", to: "main#hello", via: :get
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,5 +16,8 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  resources :books do
+    get :delete, on: :member
+  end
+  root "books#index"
 end
