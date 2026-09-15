@@ -1,0 +1,23 @@
+{
+  "name": "Book Collection",
+  "stack": "heroku-24",
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "RAILS_ENV": "production",
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    },
+    "RAILS_LOG_TO_STDOUT": "true"
+  },
+  "environments": {
+    "review": {
+      "env": {
+        "RAILS_ENV": "review"
+      }
+    }
+  }
+}
