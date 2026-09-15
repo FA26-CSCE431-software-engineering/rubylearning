@@ -1,0 +1,5 @@
+<h1>Book Details</h1>
+<p><strong>Title:</strong> <%= @book.title %></p>
+<p><%= link_to "Update", edit_book_path(@book) %> |
+   <%= link_to "Delete", delete_book_path(@book) %></p>
+<p><%= link_to "Back to Home", root_path %></p>
