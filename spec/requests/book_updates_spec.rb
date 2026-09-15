@@ -5,7 +5,7 @@ RSpec.describe "Updating books", type: :request do
     book = Book.create!(title: "Dune")
     patch book_path(book), params: { book: { title: "Dune Messiah", author: "Frank Herbert",
       price: "15.50", "published_date(1i)" => "1969", "published_date(2i)" => "10", "published_date(3i)" => "15" } }
-    expect(response).to redirect_to(root_path)
+    expect(response).to redirect_to(books_path)
     expect(book.reload.attributes.slice("title", "author", "price", "published_date"))
       .to eq("title" => "Dune Messiah", "author" => "Frank Herbert",
         "price" => BigDecimal("15.50"), "published_date" => Date.new(1969, 10, 15))

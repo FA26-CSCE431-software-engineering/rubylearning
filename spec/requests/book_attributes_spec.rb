@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Book attributes", type: :request do
   it "accepts an author through the form and shows the saved author" do
     post books_path, params: { book: { title: "Dune", author: "Frank Herbert" } }
-    expect(response).to redirect_to(root_path)
+    expect(response).to redirect_to(books_path)
     book = Book.order(:id).last
     expect(book.author).to eq("Frank Herbert")
     get book_path(book)
@@ -14,7 +14,7 @@ RSpec.describe "Book attributes", type: :request do
 
   it "accepts a price through the form and shows the saved price" do
     post books_path, params: { book: { title: "Dune", price: "12.95" } }
-    expect(response).to redirect_to(root_path)
+    expect(response).to redirect_to(books_path)
     book = Book.order(:id).last
     expect(book.price).to eq(BigDecimal("12.95"))
     get book_path(book)
@@ -26,7 +26,7 @@ RSpec.describe "Book attributes", type: :request do
   it "accepts a published date from dropdowns and shows the saved date" do
     post books_path, params: { book: { title: "Dune",
       "published_date(1i)" => "1965", "published_date(2i)" => "8", "published_date(3i)" => "1" } }
-    expect(response).to redirect_to(root_path)
+    expect(response).to redirect_to(books_path)
     book = Book.order(:id).last
     expect(book.published_date).to eq(Date.new(1965, 8, 1))
     get book_path(book)

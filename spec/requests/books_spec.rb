@@ -5,7 +5,7 @@ RSpec.describe "Creating books", type: :request do
     expect { post books_path, params: { book: { title: "Dune" } } }
       .to change(Book, :count).by(1)
     expect(Book.order(:id).last.title).to eq("Dune")
-    expect(response).to redirect_to(root_path)
+    expect(response).to redirect_to(books_path)
     follow_redirect!
     expect(response.body).to include("Book was successfully created.")
   end

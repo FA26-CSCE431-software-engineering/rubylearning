@@ -16,3 +16,5 @@ input[type="text"] { padding: 8px; width: 100%; max-width: 420px; font: inherit;
 input[type="submit"], button { padding: 8px 16px; font: inherit; cursor: pointer; }
 [role="status"] { padding: 12px; background: #e7f4e8; border: 1px solid #98c99c; }
 [role="alert"] { padding: 12px; background: #fff0f0; border: 1px solid #d99; }
+
+select { padding: 8px; min-width: 260px; font: inherit; margin-bottom: 16px; }

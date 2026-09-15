@@ -1,0 +1,19 @@
+<h1>User Books</h1>
+<% if notice.present? %><p role="status"><%= notice %></p><% end %>
+<nav><%= link_to "Books", books_path %> | <%= link_to "Users", users_path %> | <%= link_to "New User Book", new_user_book_path %></nav>
+<% if @user_books.empty? %>
+  <p>No books have been assigned yet.</p>
+<% else %>
+  <table>
+    <thead><tr><th>Username</th><th>Book title</th><th>Actions</th></tr></thead>
+    <tbody>
+      <% @user_books.each do |user_book| %>
+        <tr>
+          <td><%= user_book.user.username %></td>
+          <td><%= user_book.book.title %></td>
+          <td><%= link_to "Show", user_book %> | <%= link_to "Edit", edit_user_book_path(user_book) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

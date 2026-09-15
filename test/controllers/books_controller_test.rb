@@ -20,18 +20,18 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
   test "create update and delete persist and show notices on home" do
     assert_difference("Book.count", 1) { post books_url, params: { book: { title: "Dune" } } }
-    assert_redirected_to root_url
+    assert_redirected_to books_url
     follow_redirect!
     assert_select "[role=status]", "Book was successfully created."
     book = Book.order(:id).last
     patch book_url(book), params: { book: { title: "Dune Messiah" } }
-    assert_redirected_to root_url
+    assert_redirected_to books_url
     assert_equal "Dune Messiah", book.reload.title
     follow_redirect!
     assert_select "[role=status]", "Book was successfully updated."
     assert_no_difference("Book.count") { get delete_book_url(book) }
     assert_difference("Book.count", -1) { delete book_url(book) }
-    assert_redirected_to root_url
+    assert_redirected_to books_url
     follow_redirect!
     assert_select "[role=status]", "Book was successfully deleted."
   end

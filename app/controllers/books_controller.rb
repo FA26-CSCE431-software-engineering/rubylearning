@@ -15,7 +15,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to root_path, notice: "Book was successfully created."
+      redirect_to books_path, notice: "Book was successfully created."
     else
       flash.now[:alert] = "Book could not be saved."
       render :new, status: :unprocessable_entity
@@ -27,7 +27,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to root_path, notice: "Book was successfully updated.", status: :see_other
+      redirect_to books_path, notice: "Book was successfully updated.", status: :see_other
     else
       flash.now[:alert] = "Book could not be saved."
       render :edit, status: :unprocessable_entity
@@ -39,7 +39,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy!
-    redirect_to root_path, notice: "Book was successfully deleted.", status: :see_other
+    redirect_to books_path, notice: "Book was successfully deleted.", status: :see_other
   end
 
   private
