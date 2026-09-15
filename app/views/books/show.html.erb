@@ -1,5 +1,8 @@
 <h1>Book Details</h1>
 <p><strong>Title:</strong> <%= @book.title %></p>
+<p><strong>Author:</strong> <%= @book.author %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@book.price) %></p>
+<p><strong>Published date:</strong> <%= @book.published_date %></p>
 <p><%= link_to "Update", edit_book_path(@book) %> |
    <%= link_to "Delete", delete_book_path(@book) %></p>
 <p><%= link_to "Back to Home", root_path %></p>

@@ -16,5 +16,17 @@
     <%= form.label :title %><br>
     <%= form.text_field :title, required: true %>
   </p>
+  <p>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %>
+  </p>
+  <p>
+    <%= form.label :price %><br>
+    <%= form.number_field :price, step: "0.01", min: 0 %>
+  </p>
+  <p>
+    <%= form.label :published_date %><br>
+    <%= form.date_select :published_date, start_year: 1800, end_year: Date.current.year + 5, include_blank: true %>
+  </p>
   <%= form.submit %>
 <% end %>
